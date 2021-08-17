@@ -22,11 +22,17 @@ const Movie = mongoose.model("movies", {
   director: {
     type: String,
   },
+  restriction: {
+    type: Number,
+  },
+  genre: {
+    type: String,
+  },
 });
 
 const app = async () => {
   if (argv.add) {
-    await createMovie(argv.name, argv.year, argv.director);
+    await createMovie(argv.name, argv.year, argv.director, argv.restriction);
   } else if (argv.find) {
     await findMovie(argv.name);
   } else if (argv.findAll) {
