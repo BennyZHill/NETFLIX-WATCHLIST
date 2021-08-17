@@ -1,0 +1,25 @@
+{
+  "name": "NETFLIX-WATCHLIST",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BennyZHill/NETFLIX-WATCHLIST.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BennyZHill/NETFLIX-WATCHLIST/issues"
+  },
+  "homepage": "https://github.com/BennyZHill/NETFLIX-WATCHLIST#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mongoose": "^5.13.7",
+    "yargs": "^17.1.1"
+  }
+}
