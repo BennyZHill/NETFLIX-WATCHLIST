@@ -1,3 +1,12 @@
+require("dotenv").config();
+
+// docker run -rm --name my-mongo-db -dp 27017:27017 -v mongo-data:data/db mongo"docker
+const mongoose = require("mongoose");
+
+mongoose.connect(
+  `mongodb://${process.env.DB_URL}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
 const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 const argv = yargs(hideBin(process.argv)).argv;
@@ -32,13 +41,21 @@ const Movie = mongoose.model("movies", {
 
 const app = async () => {
   if (argv.add) {
-    await createMovie(argv.name, argv.year, argv.director, argv.restriction);
+    await createMovie(
+      argv.name,
+      argv.year,
+      argv.director,
+      argv.restriction,
+      argv.genre
+    );
   } else if (argv.find) {
     await findMovie(argv.name);
   } else if (argv.findAll) {
     await findAll();
   } else if (argv.findYear) {
     await findByYear(argv.year);
+  } else if (argv.FindGenre) {
+    await FindByGenre(argv.genre);
   } else if (argv.updateName) {
     await updateMovieName(argv.updateName, argv.newName);
   } else if (argv.updateyear) {
@@ -50,8 +67,8 @@ const app = async () => {
   process.exit();
 };
 
-const createMovie = async (name, year, director) => {
-  const newMovie = new Movie({ name, year, director });
+const createMovie = async (name, year, director, genre, restriction) => {
+  const newMovie = new Movie({ name, year, director, genre, restriction });
   await newMovie.save();
   console.log(newMovie);
 };
