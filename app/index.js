@@ -32,7 +32,7 @@ const Movie = mongoose.model("movies", {
     type: String,
   },
   restriction: {
-    type: Number,
+    type: String,
   },
   genre: {
     type: String,
