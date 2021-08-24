@@ -2,7 +2,7 @@ require("dotenv").config();
 const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 const { addMovie, editMovie, showMovie, removeMovie } = require("./utils");
-const { connection } = require("./db");
+const { connection } = require("../db");
 const main = async () => {
   const argv = yargs(hideBin(process.argv)).argv;
 
